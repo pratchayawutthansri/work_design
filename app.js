@@ -1592,13 +1592,13 @@ function renderCartItems() {
                 <span class="cart-item-price">${priceLabel}</span>
             </div>
             <div class="cart-item-actions">
-                <button class="btn-cart-item-remove" onclick="removeFromCart('${prod.id}')" aria-label="ลบสินค้า">
+                <button class="btn-cart-item-remove" type="button" data-action="remove-cart-item" data-product-id="${prod.id}" aria-label="ลบสินค้า">
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
                 <div class="cart-item-qty-control">
-                    <button class="btn-cart-qty" onclick="changeCartItemQty('${prod.id}', -1)">-</button>
+                    <button class="btn-cart-qty" type="button" data-action="decrease-cart-item" data-product-id="${prod.id}">-</button>
                     <input type="number" class="cart-qty-input" value="${item.quantity}" readonly>
-                    <button class="btn-cart-qty" onclick="changeCartItemQty('${prod.id}', 1)">+</button>
+                    <button class="btn-cart-qty" type="button" data-action="increase-cart-item" data-product-id="${prod.id}">+</button>
                 </div>
             </div>
         `;
@@ -1624,16 +1624,16 @@ window.changeCartItemQty = (productId, delta) => {
 };
 
 function openCartDrawer() {
-    cartDrawer.classList.add("open");
-    cartBackdrop.classList.add("open");
+    if (cartDrawer) cartDrawer.classList.add("open");
+    if (cartBackdrop) cartBackdrop.classList.add("open");
     document.body.classList.add("body-scroll-lock");
     renderCartItems();
     goToCartStep("items");
 }
 
 function closeCartDrawer() {
-    cartDrawer.classList.remove("open");
-    cartBackdrop.classList.remove("open");
+    if (cartDrawer) cartDrawer.classList.remove("open");
+    if (cartBackdrop) cartBackdrop.classList.remove("open");
     document.body.classList.remove("body-scroll-lock");
 }
 
@@ -1741,9 +1741,28 @@ function setupCheckoutForm() {
     
     if (cartItemsList) {
         cartItemsList.addEventListener("click", (e) => {
-            const closeBtn = e.target.closest('[data-action="close-cart-drawer"]');
-            if (closeBtn) {
+            const actionBtn = e.target.closest("[data-action]");
+            if (!actionBtn) return;
+
+            const action = actionBtn.getAttribute("data-action");
+            const productId = actionBtn.getAttribute("data-product-id");
+
+            if (action === "close-cart-drawer") {
                 closeCartDrawer();
+                return;
+            }
+
+            if (!productId) return;
+            if (action === "remove-cart-item") {
+                removeFromCart(productId);
+                return;
+            }
+            if (action === "decrease-cart-item") {
+                changeCartItemQty(productId, -1);
+                return;
+            }
+            if (action === "increase-cart-item") {
+                changeCartItemQty(productId, 1);
                 return;
             }
         });
@@ -1785,6 +1804,8 @@ function submitQuotation() {
     const nameInput = document.getElementById("inputContactName");
     const companyInput = document.getElementById("inputCompanyName");
     
+    if (!nameInput) return;
+
     const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
     const randNum = Math.floor(1000 + Math.random() * 9000);
     const refId = `OSF-${dateStr}-${randNum}`;
