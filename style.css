@@ -3545,6 +3545,47 @@ h1, h2, h3, h4, h5, h6, .brand-logo-text, .section-heading, .board-title, .frame
         gap: 24px;
     }
 }
+
+/* ========================================================================== 
+   ANDROID-SPECIFIC MOBILE TUNING
+   ========================================================================== */
+@supports not (-webkit-touch-callout: none) {
+    @media (max-width: 768px) {
+        body {
+            padding-bottom: 92px !important;
+        }
+        .app-header {
+            padding-top: 0;
+        }
+        .header-top-bar {
+            border-bottom-color: rgba(42, 74, 122, 0.18) !important;
+        }
+        .header-top-container {
+            padding-top: 0.6rem !important;
+            padding-bottom: 0.6rem !important;
+        }
+        .hero-section {
+            padding-top: 5.25rem !important;
+        }
+        .filter-status-card {
+            padding: 0.95rem 1rem !important;
+        }
+        .products-grid {
+            gap: 10px !important;
+        }
+        .mobile-bottom-bar {
+            padding-bottom: 10px !important;
+        }
+        .mobile-detail-action-bar {
+            padding-bottom: 14px !important;
+        }
+        .mobile-bottom-item,
+        .mobile-detail-bar-inner button,
+        .mobile-detail-bar-inner a {
+            min-height: 44px;
+        }
+    }
+}
 /* ==========================================================================
    ULTRA-PREMIUM & LUXURY DESIGN ELEVATION (OPTION 1 VISUAL POLISH)
    ========================================================================== */
