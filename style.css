@@ -142,6 +142,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px; /* 1rem = 16px */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 :focus-visible {
     outline: 3px solid var(--primary-300);
@@ -154,6 +156,8 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 /* Global Heading Font Family (Brand Kanit) */
 h1, h2, h3, h4, h5, h6, .brand-logo-text, .section-heading, .board-title, .frame-header-label {
@@ -3759,6 +3763,12 @@ h1, h2, h3, h4, h5, h6, .brand-logo-text, .section-heading, .board-title, .frame
         border: 1px solid rgba(214, 197, 140, 0.22) !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
     }
+    .mobile-bottom-bar {
+        padding-bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+    }
+    .mobile-detail-action-bar {
+        padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
+    }
     .btn-back-catalog {
         padding: 6px 14px !important;
         font-size: 0.82rem !important;
@@ -3843,6 +3853,9 @@ h1, h2, h3, h4, h5, h6, .brand-logo-text, .section-heading, .board-title, .frame
     }
     .mobile-bottom-bar {
         padding-bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+    }
+    .mobile-detail-action-bar {
+        padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
     }
 }
 
@@ -4024,10 +4037,16 @@ h1, h2, h3, h4, h5, h6, .brand-logo-text, .section-heading, .board-title, .frame
     .mobile-scroll-top {
         display: flex !important;
     }
+    .app-header {
+        padding-top: env(safe-area-inset-top);
+    }
+    .header-top-bar {
+        padding-top: max(0px, env(safe-area-inset-top));
+    }
 
     /* Add bottom padding for fixed bar */
     body {
-        padding-bottom: 72px !important;
+        padding-bottom: calc(72px + env(safe-area-inset-bottom)) !important;
     }
     /* Hide floating cart on mobile (bottom bar replaces it) */
     .floating-cart-container {
