@@ -3585,6 +3585,90 @@ h1, h2, h3, h4, h5, h6, .brand-logo-text, .section-heading, .board-title, .frame
             min-height: 44px;
         }
     }
+
+    @media (max-width: 480px) {
+        body {
+            padding-bottom: 96px !important;
+        }
+        .header-top-container {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+        }
+        .brand-logo-text {
+            font-size: 0.92rem !important;
+        }
+        .logo-icon-circle {
+            width: 32px !important;
+            height: 32px !important;
+        }
+        .hero-section {
+            padding-top: 4.75rem !important;
+            padding-bottom: 2.5rem !important;
+        }
+        .hero-title {
+            font-size: 1.2rem !important;
+        }
+        .hero-desc {
+            font-size: 0.78rem !important;
+        }
+        .filter-bar-row {
+            gap: 10px !important;
+        }
+        .categories-bar-wrapper {
+            padding-bottom: 8px !important;
+        }
+        .category-tab {
+            padding: 0.55rem 0.75rem !important;
+            font-size: 0.76rem !important;
+        }
+        .products-grid {
+            gap: 8px !important;
+        }
+        .product-card {
+            border-radius: 10px !important;
+        }
+        .card-image-wrapper {
+            height: 126px !important;
+        }
+        .card-info {
+            padding: 9px 10px 12px !important;
+        }
+        .product-title {
+            font-size: 0.76rem !important;
+        }
+        .price-value {
+            font-size: 0.9rem !important;
+        }
+        .btn-card-action {
+            width: 30px !important;
+            height: 30px !important;
+        }
+        .mobile-bottom-bar {
+            padding: 5px 6px calc(8px + env(safe-area-inset-bottom)) !important;
+        }
+        .mobile-bottom-item {
+            min-width: 50px;
+            padding: 5px 8px;
+            font-size: 0.6rem;
+        }
+        .mobile-bottom-item i {
+            font-size: 1rem;
+        }
+        .mobile-detail-bar-inner {
+            gap: 8px;
+        }
+        .mobile-detail-bar-inner button,
+        .mobile-detail-bar-inner a {
+            padding: 12px 10px;
+            font-size: 0.82rem;
+        }
+        .mobile-scroll-top {
+            right: 12px;
+            bottom: 76px;
+            width: 40px;
+            height: 40px;
+        }
+    }
 }
 /* ==========================================================================
    ULTRA-PREMIUM & LUXURY DESIGN ELEVATION (OPTION 1 VISUAL POLISH)
